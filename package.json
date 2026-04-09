@@ -1,0 +1,23 @@
+{
+  "name": "com.localpolicedepartment.utilities",
+  "displayName": "LPD Udon Utilities",
+  "version": "1.0.0",
+  "description": "Utility functions for udon scripts",
+  "unity": "2022.3",
+  "author": {
+    "name": "karet"
+  },
+  "vpmDependencies": {
+    "com.vrchat.worlds": ">=3.5.0",
+  },
+  "keywords": [
+    "vrchat",
+    "udon",
+    "udonsharp",
+    "worlds",
+	"utility"
+  ],
+  "license": "MIT",
+  "changelogUrl": "",
+  "documentationUrl": ""
+}

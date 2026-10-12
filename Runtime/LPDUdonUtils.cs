@@ -224,5 +224,44 @@ namespace LocalPoliceDepartment.Utilities
                 return Color.white; // Fallback
             }
         }
+        
+        public static T[] ExpandArray<T>(T[] array)
+        {
+            // Safety: empty (or null) array → return a fresh array of length 2
+            if (array == null || array.Length == 0)
+                return new T[2];
+
+            // Allocate the doubled array and copy the original contents
+            T[] result = new T[array.Length * 2];
+            Array.Copy(array, result, array.Length);
+            return result;
+        }
+
+        public static int[] GetPlayerIds()
+        {
+            VRCPlayerApi[] players =  VRCPlayerApi.GetPlayers();
+            int[] playerIds = new int[players.Length];
+            for (int i = 0; i < players.Length; i++) playerIds[i] = players[i].playerId;
+            return playerIds;
+        }
+
+        public static VRCPlayerApi GetPlayerByName(string name)
+        {
+            VRCPlayerApi[] players =  VRCPlayerApi.GetPlayers();
+            for (int i = 0; i < players.Length; i++) if (name == players[i].displayName) return players[i];
+            return null;
+        }
+
+        public static VRCPlayerApi GetInstanceMaster()
+        {
+            VRCPlayerApi[] players =  VRCPlayerApi.GetPlayers();
+            for (int i = 0; i < players.Length; i++) if (players[i].isMaster) return players[i];
+            return null;
+        }
+        
+        public static string ColorToHex(Color color)
+        {
+            return $"#{(int)(color.r * 255):X2}{(int)(color.g * 255):X2}{(int)(color.b * 255):X2}";
+        }
     }
 }
